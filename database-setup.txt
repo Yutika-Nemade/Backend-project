@@ -1,0 +1,27 @@
+goto mongodb atlas.com
+create new project
+
+create new database user
+add IP address
+
+connect to database
+
+add url to .env file
+
+add db_name in constants.js
+
+there are two approaches to connect to db
+1. write function to connect db in index.js (not good approach)
+2. write function to connect db in db folder (professional approach)
+
+install dotenv, mongoose, express
+
+Two important points about database connectivity: 
+
+1. When connecting to databases, handling potential data-not-found scenarios is essential. Employ try/catch blocks or promises to manage errors or we can also use promises.
+
+key to remember : ( wrap in try-catch )
+
+2. Database operations involve latency, and traditional synchronous code can lead to blocking, where the program waits for the database query to complete before moving on. So, we should async/await which allows for non-blocking execution, enabling the program to continue with other tasks while waiting for the database response. 
+
+key to remember :  ( always remember the database is in another continent, so use async await)
