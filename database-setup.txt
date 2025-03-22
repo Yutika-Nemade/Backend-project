@@ -25,3 +25,97 @@ key to remember : ( wrap in try-catch )
 2. Database operations involve latency, and traditional synchronous code can lead to blocking, where the program waits for the database query to complete before moving on. So, we should async/await which allows for non-blocking execution, enabling the program to continue with other tasks while waiting for the database response. 
 
 key to remember :  ( always remember the database is in another continent, so use async await)
+
+
+
+1. using exit() method of process object:
+    usecase: It is used if you want to terminate the execution completely regardless of any async operation an all.
+    default value exit(0)  which indicate exit successfully without any interption.
+    any non zero value  like exit(1) indicates process exit intentionaly.
+
+code :   
+ function hello() {
+    process.exit(1);
+    console.log('hello');
+}
+hello();
+
+in this  code process will terminate without logging hello in the console.
+
+2. using exitCode property  of process:
+    usecase: It is used if you want to terminate the execution completely but allowing to completion of the pending tasks.
+    default value exitCode=0  which indicate exit successfully without any interption.
+    any non zero value  like exitCode=1 indicates process exit intentionaly.
+
+code: 
+function hello() {
+    process.exitCode = 1;
+    console.log('hello');
+}
+hello();
+
+in this code process will exit but after logging hello in the console.
+
+
+connectionInstance is an object with 53 properties which are  ( as of now they are 83)
+  'connections object',
+  'nextConnectionId number',
+  'models object',
+  'events object',
+  '__driver object',
+  'options object',
+  '_pluralize function',
+  'Schema function',
+  'model function',
+  'plugins object',
+  'default object',
+  'mongoose object',
+  'cast function',
+  'STATES object',
+  'setDriver function',
+  'set function',
+  'get function',
+  'createConnection function',
+  'connect function',
+  'disconnect function',
+  'startSession function',
+  'pluralize function',
+  'deleteModel function',
+  'modelNames function',
+  'plugin function',
+  'version string',
+  'Mongoose function',
+  'SchemaType function',
+  'SchemaTypes object',
+  'VirtualType function',
+  'Types object',
+  'Query function',
+  'Model function',
+  'Document function',
+  'ObjectId function',
+  'isValidObjectId function',
+  'isObjectIdOrHexString function',
+  'syncIndexes function',
+  'Decimal128 function',
+  'Mixed function',
+  'Date function',
+  'Number function',
+  'Error function',
+  'MongooseError function',
+  'now function',
+  'CastError function',
+  'SchemaTypeOptions function',
+  'mongo object',
+  'mquery function',
+  'sanitizeFilter function',
+  'trusted function',
+  'skipMiddlewareFunction function',
+  'overwriteMiddlewareResult function'
+
+
+  node  version-22.11.0
+. "scripts": {
+    "dev": "nodemon -r dotenv/config src/ index.js"
+  },
+
+No need of writing --experimental-json-modules. Anyway your explanation was excellent.
