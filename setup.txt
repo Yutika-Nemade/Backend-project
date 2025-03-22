@@ -1,0 +1,44 @@
+Professional setup for backend
+
+create new folder
+push on github
+
+check whether node is installed or not -- use command --> node -v
+
+npm init
+
+create public folder
+create public/temp
+create .gitkeep file inside public/temp folder. --> this .gitkeep file helps us to push and track the empty folders
+(like if we are storing images in application, usually we store them in temp folder, so in this case .gitkeep file helps us)
+
+We can create gitignore files using gitignore generator website(in that site we have multiple codes for multiple programming languages and packages)
+
+create .env
+
+also in package.json, add type: module (so that we can use import syntax)
+
+install nodemon --> npm i -D nodemon
+-D is used for dev dependency, dev dependency is the dependency that we used during development, don't use in production
+
+nodemon restarts the server everytime after doing changes in application
+
+In package.json file under scripts object add "dev": "nodemon src/index.js"
+when we will run npm dev run command it will restart server
+
+create new folder in root directory as src
+create files in src -- app.js, index.js, constants.js
+create folders in src -- 
+    controllers -- all the functionalities are present in this folder
+    db -- database connection logic is written in this folder
+    middlewares -- contains the code that need to run in between eg. when we get the request but before     fulfilling that request we get cookies (kind of checking)
+    models -- it contains the data structure of models
+    routes -- it contains all routing
+    utils -- it contains utilities eg. file upload, mailing
+
+
+install prettier
+to sync the formatting of all code (as a team works on a project so all should use same formatting)
+npm i -D prettier
+add 2 files .prettierrc -- contains all configuration 
+            .prettierignore -- contains all the files that should not follow prettier formatting like (.env, node-modules)
