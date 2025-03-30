@@ -1,0 +1,12 @@
+install cookie-parser and cors
+
+when we are using any middleware or for configuration always write
+app.use(cors())
+
+
+there are four parameters 
+err, req, res, next
+next is used when we are using middlewares, next will pass the information to other
+
+
+create a js file in utils folder so that we can use the same function(wrapper function) wherever required
