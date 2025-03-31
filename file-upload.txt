@@ -1,0 +1,21 @@
+install cloudinary package
+install multer package
+
+-----production 
+1. User will upload the file through multer. Take file from user and keep on server as temporary
+2. Take file from cloudinary then place on server
+
+Multer is an npm package commonly used in Node.js applications for handling multipart/form data, particularly for file uploads. It simplifies the process of handling file uploads by providing middleware that can be easily integrated into Express.js applications.
+
+console.log(file)
+file option provides many ways such as fieldname, original name
+Key :	Description -	Note
+fieldname :	Field name specified in the form	
+originalname :	Name of the file on the user's computer	
+encoding :	Encoding type of the file	
+mimetype :	Mime type of the file	
+size :	Size of the file in bytes	
+destination :	The folder to which the file has been saved	- DiskStorage
+filename :	The name of the file within the destination	- DiskStorage
+path :	The full path to the uploaded file -	DiskStorage
+buffer :	A Buffer of the entire file	- MemoryStorage

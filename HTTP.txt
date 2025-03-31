@@ -1,0 +1,71 @@
+HTTP -- Hypertext transfer protocol
+
+URL - Uniform Resource Locator -- gives the location
+URI - Uniform Resource Identifier
+URN - Uniform Resource Name
+
+** What are HTTP headers?
+headers are metadata --> key-value sent along with request and response
+
+uses:
+caching, authentication (sessiontoken, cookiee), manage state(loggedIn, cart)
+X-prefix -- deprecated now
+
+* Request headers --> from client
+* Response headers --> from server
+* Representation headers --> encoding/compression
+* Payload headers --> data
+
+*** MOST COMMON headers
+- Accept --> application/json; text/html
+- User-Agent --> shows from where the request is coming eg. postman, browser
+- Authorization -->Bearer------------
+- Content-Type --> images, pdf
+- Cookie --> duration
+- Cache-control 
+
+*** CORS headers
+- Access-Control-Allow-origin
+- Access-Control-Allow-Credentials
+- Access-Control-Allow-Method
+
+** Security policy
+- Cross-Origin-Embedder-Policy
+- Cross-Origin-Opener-Policy
+- Content-Security-Policy
+- X-XSS-Protection
+
+
+*** HTTP Methods
+basic set of operations that can be used to interact with the server
+
+- GET : retrieve and Resource
+- HEAD : No message body (only response headers)
+- OPTIONS : What operations are available (like GET, POST, etc)
+- TRACE : used in debugging, loopback test (get some data), proxy related debugging
+- DELETE : remove a Resource
+- PUT : replace a Resource
+- POST : interact with resource (mostly add)
+- PATCH : change part of a resource 
+
+
+*** HTTP Status code
+- 100-199 --> informational
+- 200-299 --> success
+- 300-399 --> redirection
+- 400-499 --> client error
+- 500-599 --> server error
+
+100 - continue
+101 - processing
+200 - ok
+201 - created
+202 - accepted
+307 - temporary redirect
+308 - permanent redirect
+400 - bad request
+401 - unauthorized
+402 - payment required
+404 - not found
+500 - internal server error
+504 - gateway time out
