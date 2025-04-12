@@ -1,0 +1,9 @@
+To configure Postman effectively, begin by creating a new collection to organize your API requests. 
+Open Postman, navigate to the "Collections" tab, and click "New Collection" to name and save your collection. Next, create a new request by clicking the "+" button, enter the API endpoint, and save the request to your newly created collection. 
+To make your setup more dynamic, configure an environment variable for your server path. Click the gear icon in the top right corner, select "Manage Environments," and add a new environment. 
+Define a variable—for example, server_path—and assign it your server's base URL, such as https://api.example.com. Once saved, you can use this variable in your requests by referencing it with double curly braces, like {{server_path}}/users. 
+Finally, select your environment from the dropdown in the top right, and Postman will automatically substitute the variable with the corresponding value when the request is sent. This setup allows for easy switching between environments (e.g., development, staging, production) without modifying each request manually.
+
+
+
+
