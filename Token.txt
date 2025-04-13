@@ -1,0 +1,10 @@
+Access token - short duration
+refrsh token - long duration
+
+we can use the resource for authentication requirement until we have access token
+eg. File upload
+
+As access token are of short duration, it may happen that our session gets expired and then we have put the password again to login
+in this case, refresh token comes to the picture, we store refesh token in database also provide it to the users.
+We validate user through access token only, but no need to put password everytime.
+User will hit the refesh token in endpoint and will match this with the refresh token stored in our database, if it matches then login is successful
