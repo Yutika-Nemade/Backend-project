@@ -443,4 +443,65 @@ return res
 
 })
 
-export { registerUser, loginUser, logoutUser, refreshAccessToken, changeCurrentPassword, getCurrentUser, updateAccountDetails, updateUserAvatar, updateCoverImage, getUserChannelProfile };
+// Controller function to get the watch history of a user
+const getWatchHistory = asyncHandler(async (req, res) => {
+  // Aggregate data for the authenticated user
+  const user = await User.aggregate([
+      {
+          // Match the user by their _id from the request (authentication middleware should set req.user)
+          $match: {
+              _id: new mongoose.Types.ObjectId(req.user._id)
+          }
+      },
+      {
+          // Perform a lookup to join video documents referenced in the user's watchHistory array
+          $lookup: {
+              from: "videos", // Collection to join (videos)
+              localField: "watchHistory", // Field in User document
+              foreignField: "_id", // Field in Video document to match with
+              as: "watchHistory", // Output array field name
+              pipeline: [ // Further process each video
+                  {
+                      // Lookup to fetch the owner (user) of the video
+                      $lookup: {
+                          from: "users", // Collection to join (users)
+                          localField: "owner", // Field in Video document
+                          foreignField: "_id", // Field in User document to match with
+                          as: "owner", // Output array field
+                          pipeline: [
+                              {
+                                  // Project only necessary fields from owner
+                                  $project: {
+                                      fullName: 1,
+                                      username: 1,
+                                      avatar: 1
+                                  }
+                              }
+                          ]
+                      }
+                  },
+                  {
+                      // Flatten the owner array to a single object (assuming each video has one owner)
+                      $addFields: {
+                          owner: { $first: "$owner" }
+                      }
+                  }
+              ]
+          }
+      }
+  ]);
+
+  // Send the final response with the user's populated watch history
+  return res
+      .status(200)
+      .json(
+          new ApiResponse(
+              200,
+              user[0].watchHistory, // Send only the watch history array
+              "Watch history fetched successfully"
+          )
+      );
+});
+
+
+export { registerUser, loginUser, logoutUser, refreshAccessToken, changeCurrentPassword, getCurrentUser, updateAccountDetails, updateUserAvatar, updateCoverImage, getUserChannelProfile, getWatchHistory };
