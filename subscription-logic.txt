@@ -1,0 +1,9 @@
+In a subscription model, many users can subscribe to channels, and a user can subscribe to many channels.
+
+We cannot use arrays to store this information, as it may lead to expensive operations when retrieving or deleting users.
+
+In MongoDB, the subscription model is implemented by creating a new document for each subscription, storing the channel name and the user name.
+
+To get the subscribers of a particular channel, find all documents that contain that channel and count them.
+
+To get the channels a particular user has subscribed to, find all documents that contain that user and count them.
